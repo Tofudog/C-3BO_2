@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #ignoring the the entire dependencies folder
 python_dependencies
 
@@ -5,3 +6,12 @@ python_dependencies
 *.txt
 *.rtf
 
+=======
+#ignoring the the entire dependencies folder
+python_dependencies
+
+#ignore irrelevant text and rtf files
+*.txt
+*.rtf
+
+>>>>>>> 4e3b8c3 (added gitignore and python files)
