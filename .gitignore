@@ -1,0 +1,7 @@
+#ignoring the the entire dependencies folder
+python_dependencies
+
+#ignore irrelevant text and rtf files
+*.txt
+*.rtf
+
