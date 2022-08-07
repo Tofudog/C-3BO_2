@@ -1,5 +1,5 @@
 ---
-title: "bcr_abl1"
+title: "BCR-ABL1 in depth RNA Analysis"
 author: "Leonardo Amato Regis de Farias"
 date: "2022-08-06"
 output: html_document
@@ -10,8 +10,67 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-
+PTH <- "clinvar_result.txt"
+if (!file.exists(PTH)) {
+  print("Recheck if your file is in the following directory:")
+  print(getwd())
+} else {
+    clin_df <- read.delim(PTH)
+}
 ```
+
+```{r echo=FALSE}
+head(clin_df)
+print("Here are the following features:")
+print(colnames(clin_df))
+dim(clin_df)
+```
+
+#### we need to find about the uniqueness of the features. For instance, just after tested examination on __, there was only ONE unique value, chromosome 9, so no purpose in keeping the feature
+```{r}
+clin_mat <- as.matrix(clin_df)  #to support idx-accessible computation
+high_bounds <- c()
+for (feature in colnames(clin_df)) {
+  nunique = length(unique(clin_mat[, feature]))
+  print( paste("For this feature:", feature, "---> there are", nunique, "unique values") )
+  if (nunique==1 || nunique > 200) {
+    #either too much diversity that gives no correlation, or
+    #literally just one value
+    high_bounds <- append(high_bounds, feature)
+  }
+}
+```
+##### just by observing above, 'X' and 'GRCh37Chromosome' are completely useless... With 227 values, many features possess high variations.
+
+```{r echo=FALSE}
+useless <- clin_mat[, high_bounds]
+clin_final <- clin_df[, -match(high_bounds, names(clin_df))] 
+head(clin_final)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
