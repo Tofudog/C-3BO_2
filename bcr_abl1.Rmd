@@ -20,7 +20,7 @@ if (!file.exists(PTH)) {
 ```
 
 ```{r echo=FALSE}
-head(clin_df)
+#head(clin_df)
 print("Here are the following features:")
 print(colnames(clin_df))
 dim(clin_df)
@@ -45,8 +45,71 @@ for (feature in colnames(clin_df)) {
 ```{r echo=FALSE}
 useless <- clin_mat[, high_bounds]
 clin_final <- clin_df[, -match(high_bounds, names(clin_df))] 
-head(clin_final)
+clin_mat <- as.matrix(clin_final)
 ```
+
+##### check if there are any missing values
+```{r}
+sum(is.na(clin_final))  #25 missing in total
+na.s <- c()
+for (feature in 1:9) {
+  amt_na <- sum(is.na(clin_mat[,feature]))
+  na.s <- append(na.s, amt_na )
+  if (amt_na > 0) {
+    print(paste(colnames(clin_final)[feature], "has some missing"))
+  }
+}
+```
+
+#### why does 'GRCh38Chromosome' have some null values?
+#### its significance: ... research
+```{r}
+#integer datatype
+class(clin_final$GRCh38Chromosome)
+
+#doesn't quite modify the values because R is weird on returns
+imputer <- function(col_vector, method="mean") {
+  fillna <- NaN
+  if (method == "mean" || method=="average") {
+    fillna <- mean(col_vector)
+  }
+  #probably not the best choice for integer column vector
+  else if (method == "median") {
+    fillna <- median(col_vector)
+  }
+  for (ridx in which(is.na(col_vector)) ) {
+    col_vector[ridx] <- fillna
+  }
+  col_vector <- col_vector
+}
+#clin_final$GRCh38Chromosome <- imputer(clin_final$GRCh38Chromosome)
+```
+
+#### either exclude GRCh38Chromosome altogether or impute with zeroes
+```{r}
+#using the first option, total exclusion
+clin_final <- subset(clin_final, select = -c(GRCh38Chromosome))
+clin_final
+```
+
+```{r}
+#probably unecessary to utilize the other alternative
+```
+
+#### encoding the dataframe
+#### what will be a complex challenge is handling the 'Gene.s.' attribute, which is separated by | for each row sample. ABL1 is prevalent in many of the samples.
+```{r}
+#be sure to count the amount for each gene...
+
+
+```
+
+
+
+
+
+
+
 
 
 
