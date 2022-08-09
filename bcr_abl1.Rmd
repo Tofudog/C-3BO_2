@@ -96,12 +96,33 @@ clin_final
 #probably unecessary to utilize the other alternative
 ```
 
+```{r}
+#none of the features are numeric
+clin_mat <- as.matrix(clin_final)
+for (feature in colnames(clin_final)) {
+  print( paste(feature, class(clin_mat[feature]), sep=": ") )
+}
+```
+
 #### encoding the dataframe
 #### what will be a complex challenge is handling the 'Gene.s.' attribute, which is separated by | for each row sample. ABL1 is prevalent in many of the samples.
 ```{r}
+
+
 #be sure to count the amount for each gene...
+genes <- clin_final$Gene.s.
+freq <- c()
 
 
+for (sample in genes) {
+  genes_per_samples <- strsplit(sample, split="|", fixed=TRUE)
+  for (G in genes_per_samples[[1]]) {
+    freq[G] = 1
+    freq[G] = freq[G]+1
+  }
+  break
+}
+freq
 ```
 
 
