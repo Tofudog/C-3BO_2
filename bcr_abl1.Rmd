@@ -34,8 +34,7 @@ for (feature in colnames(clin_df)) {
   nunique = length(unique(clin_mat[, feature]))
   print( paste("For this feature:", feature, "---> there are", nunique, "unique values") )
   if (nunique==1 || nunique > 200) {
-    #either too much diversity that gives no correlation, or
-    #literally just one value
+    #either too much diversity that gives no correlation, or literally just one value
     high_bounds <- append(high_bounds, feature)
   }
 }
@@ -62,7 +61,7 @@ for (feature in 1:9) {
 ```
 
 #### why does 'GRCh38Chromosome' have some null values?
-#### its significance: ... research
+#### its significance: "GRCh38/hg38 is the assembly of the human genome released December of 2013" (https://gatk.broadinstitute.org/hc/en-us/articles/360035890951-Human-genome-reference-builds-GRCh38-or-hg38-b37-hg19)
 ```{r}
 #integer datatype
 class(clin_final$GRCh38Chromosome)
@@ -89,7 +88,7 @@ imputer <- function(col_vector, method="mean") {
 ```{r}
 #using the first option, total exclusion
 clin_final <- subset(clin_final, select = -c(GRCh38Chromosome))
-clin_final
+head(clin_final[, 2:8], 3)  #just annoying to see empty space made by the first feature
 ```
 
 ```{r}
@@ -104,26 +103,59 @@ for (feature in colnames(clin_final)) {
 }
 ```
 
-#### encoding the dataframe
+#### below are the possible classes for patients
+```{r}
+conditions <- unique(clin_final$Condition.s.)
+#... <- as.factor(conditions)
+severity <- as.factor(clin_final$Clinical_significance)
+toPred <- c(5, 13, 14, 15, 18, 19, 20, 22)
+conditions
+```
+
 #### what will be a complex challenge is handling the 'Gene.s.' attribute, which is separated by | for each row sample. ABL1 is prevalent in many of the samples.
 ```{r}
-
-
-#be sure to count the amount for each gene...
 genes <- clin_final$Gene.s.
-freq <- c()
+freq <- c()  #entire number of genes summed up
+condition_freq <- c()  #also need to record conditions for genes
 
-
-for (sample in genes) {
+for (pos in 1:length(genes) ) {
+  sample = genes[pos]
   genes_per_samples <- strsplit(sample, split="|", fixed=TRUE)
-  for (G in genes_per_samples[[1]]) {
-    freq[G] = 1
-    freq[G] = freq[G]+1
+  
+  patient_condition <- clin_final[pos, "Condition.s."]
+  if (!( patient_condition %in% names(condition_freq) )) {
+    condition_freq[patient_condition] = c()  #another hashmap/dictionary data structure
   }
-  break
+  
+  for (G in genes_per_samples[[1]]) {
+    #again, counting number of genes in general
+    if (!(G %in% names(freq))) {
+      freq[G] = 0
+    }
+    freq[G] = freq[G]+1
+    if ( !(G %in% names(condition_freq[[patient_condition]])) ) {
+      condition_freq[[patient_condition]][G] = 0
+    }
+    condition_freq[[patient_condition]][G] = condition_freq[[patient_condition]][G]+1
+  }
 }
-freq
+
+###need to be able to count the amount each gene per leukemia type
+condition_freq[toPred]
 ```
+
+```{r}
+barplot(freq, main="The frequency of occurances per gene for this dataset")
+```
+
+#### encoding the genetic attributes with ordinal and label encoders, but also normalizing some because of their biological significance
+```{r}
+#use grep or something for each clinical_significance, etc.
+head(clin_final[,1:8], 12)
+```
+
+
+
 
 
 
