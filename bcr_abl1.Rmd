@@ -150,9 +150,39 @@ barplot(freq, main="The frequency of occurances per gene for this dataset")
 
 #### encoding the genetic attributes with ordinal and label encoders, but also normalizing some because of their biological significance
 ```{r}
-#use grep or something for each clinical_significance, etc.
-head(clin_final[,1:8], 12)
+#extremely efficient pattern/ordinal encoder I created
+patternEnc <- function(feature, patterns, data=clin_final, LE=0) {
+  original <- as.matrix(data[,feature])
+  encoded <- rep(0, nrow(data))
+  for (mod_ in patterns) {
+    for (j in grep(mod_, original)) {
+      encoded[j] = LE
+    }
+    LE = LE + 1
+  }
+  encoded
+}
+
+levels <- c("not provided", "Uncertain", "Benign", "Likely benign", "Likely Patho", "Pathogenic")
+clin_final$levels <- patternEnc("Clinical_significance", levels, data=clin_final, LE=-1)
+
+review <- unique(clin_final$Review_status)
+clin_final$new_Review_status <- patternEnc("Review_status", review, data=clin_final)
+
+conditionEnc <- unique(clin_final$Condition.s.)
+clin_final$new_Condition.s. <- patternEnc("Condition.s.", conditionEnc, data=clin_final)
+
+###fix
+#more specific to whether degree of leukemia (0 if none)
+leukEnc <- grep("eukemia", unique(clin_final$Condition.s.))
+clin_final$leukemia <- patternEnc("Condition.s.", c("None",unique(clin_final$Condition.s.)[leukEnc]))
 ```
+
+```{r}
+clin_final$leukemia
+```
+
+
 
 
 

@@ -46,3 +46,39 @@ for (pos in 1:length(genes) ) {
   }
 }
 
+#extremely clean and efficient pattern/ordinal encoder I programmed
+patternEnc <- function(feature, patterns, data=clin_final, LE=0) {
+  original <- as.matrix(data[,feature])
+  encoded <- rep(0, nrow(data))
+  for (mod_ in patterns) {
+    for (j in grep(mod_, original)) {
+      encoded[j] = LE
+    }
+    LE = LE + 1
+  }
+  encoded
+}
+
+#retreiving the clinical sig.
+
+
+###example class
+# create a list with required components
+movieList <- list(name = "Iron man", leadActor = "Robert Downey Jr")
+# give a name to your class
+class(movieList) <- "movie"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
