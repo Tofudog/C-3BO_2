@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>C-3BO</title>
+</head>
+    <body>
+        {% for source in bibliography %}
+        <h1>title: {{source.title}}</h1>
+        <h2>authors: {{source.authors}}</h2>
+        <h2>journal: {{source.journal}}</h2>
+        <h3>annotation: {{source.annotation}}</h3>
+        <h1>
+            ______
+        </h1>
+        {% endfor %}
+    </body>
+</html>
