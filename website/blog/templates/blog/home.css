@@ -4,3 +4,8 @@
     width: 23%;
     padding: 0 10px;
   }
+#quotes {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: large;
+  color: brown;
+}
