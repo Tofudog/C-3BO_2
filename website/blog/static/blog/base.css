@@ -2,6 +2,7 @@ body {
     background: #fafafa;
     color: #333333;
     margin-top: 5rem;
+    margin: 0;
   }
   
 h1, h2, h3, h4, h5, h6 {
@@ -15,6 +16,10 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0 10px;
   }
 
+.stop_side_by_side {
+    clear: both;
+  }
+
 .quotes {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: large;
@@ -26,4 +31,34 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
   color: rgba(77, 11, 139, 0.911);
   font-style: italic;
+}
+
+.sidenav {
+  height:100%;
+  width:160px;
+  position: fixed;
+  z-index:1;
+  top:0;
+  width: 100%;
+  left:0;
+  background-color:#111;
+  overflow-x:hidden;
+  padding-top:20px;
+}
+
+.sidenav a {
+  padding:6px 8px 6px 16px;
+  text-decoration: none;
+  font-size:25px;
+  color: #818181;
+  display:block;
+}
+
+.sidenav a:hover{
+  color:#f1f1f1;
+}	
+
+.main{
+  margin-top: 30px;
+  padding: 0px 10px;
 }

@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template.defaulttags import csrf_token
+
+import requests
 
 #selections on app content
 home_info = {
@@ -25,11 +28,11 @@ class Citation:
             return f"{title}; {authors}; {category}; {link}"
 
 #consider making each object in pastWork a Citation
+t1 = "Using Convolutional Neural Networks (CNN) Image Recognition to "
+t1 += "Program the Artificially Learned C3BO: Cancer Blood Oncologist"
+t2 = "A Novel Approach of Deep Learning on Detection and Classification "
+t2 += "of Leukemic Cells and BCR-ABL1 Gene"
 pastWork = [
-    t1 = "Using Convolutional Neural Networks (CNN) Image Recognition to "
-    t1 += "Program the Artificially Learned C3BO: Cancer Blood Oncologist"
-    t2 = "A Novel Approach of Deep Learning on Detection and Classification "
-    t2 += "of Leukemic Cells and BCR-ABL1 Gene"
     {'title': t1, 'link': "None"}, 
     {'title': t2, 'link': "None"},
 ]
@@ -40,6 +43,9 @@ citationList = [
 ]
 
 def home(request):
+    logoPath = "C:\\Users\\leode\\isef_2022-23\\website\\blog\\"
+    logoPath += "templates\\blog\\images\\c3bo_temp_logo.jpg"
+    context = {'images': {'logo': logoPath}, 'project': home_info}
     return render(request, 'blog/home.html', {'project': home_info})
 
 def about(request):
@@ -50,3 +56,31 @@ def about(request):
 def citations(request):
     context = {}
     return render(request, 'blog/citations.html', context)
+
+
+
+# def output(request):
+#     #data = requests.get('https://regres.in/api/users')
+#     print("hello world...")
+#     #data = data.text
+#     data = "this is your data"
+#     return render(request, 'home.html', {'data': data})
+
+def click_button(request):
+    return render(request, 'blog/home.html', {'where': 'home'})
+
+# json_file = open('model2.json', 'r')
+# loaded_model_json = json_file.read()
+# json_file.close()
+# loaded_model = model_from_json(loaded_model_json)
+# loaded_model.load_weights("model2.h5")
+# loaded_model.compile(loss='binary_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
+
+def hospital(request):
+    context = {}
+    return render(request, 'blog/hospital.html', context)
+
+def diagnose(request):
+    context = {}
+
+    return render(request, 'blog/hospital.html', context)

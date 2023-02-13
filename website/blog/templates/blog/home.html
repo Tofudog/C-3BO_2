@@ -1,28 +1,52 @@
 {% extends "blog/base.html" %}
+{% load static %}
 
 {% block content %}
+
     <div class="side_by_side">
         <h1>Blood-bot 8's {{project.title}}</h1>
+        <img src="{% static 'blog//images//c3bo_temp_logo.jpg' %}"
+            width="180" height="150">
     </div>
-    <h2>
-        Deployed by {{project.author}} on <t>{{project.Date_created}}</t>
-    </h2>
-    <div>
+    <div class="side_by_side">
+        <h2>
+            Deployed by {{project.author}} on <t>{{project.Date_created}}</t>
+        </h2>
+        <div>
+            <h3>
+                According to the American Cancer Society...
+                # of cases
+            </h3> 
+        </div>
+        <div>
+            <ul type="circle">
+                <li> Version 2.2 </li>
+                <li> BCR-ABL1 genetic features are available </li>
+                <li> Cannot speak spanish </li>
+            </ul>
+        </div>
         <h3>
-            According to the American Cancer Society...
-            # of cases
-        </h3> 
+            <em>"super interesting quote (h3 tag should have class/id)" -Me</em>
+        </h3>
     </div>
+    <img src="{% static 'blog//images//c3po_photo.jpg' %}"
+        width="400" height="250">
+    <h1>-------</h1>
+
+    <form action="click_button/" method="post">
+        {% csrf_token %}
+        <!-- <label for="your_name">Your name: </label>
+        <input id="your_name" type="text" name="your_name" value="{{ current_name }}"> -->
+        <input type="submit" value="OK">
+    </form>
+
+    {% if where %}
+        You are {{ where }}
+    {% endif %}
+
+    <!-- <script>
+        document.getElementById("h3_text").innerHTML = "New Text";
+    </script> -->
     
-    <div>
-        <ul type="circle">
-            <li> Version 2.2 </li>
-            <li> BCR-ABL1 genetic features are available </li>
-            <li> Cannot speak spanish </li>
-        </ul>
-    </div>
-    <h3>
-        <em>"super interesting quote (h3 tag should have class/id)" -Me</em>
-    </h3>
-    
+
 {% endblock content %}
