@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+   <body>
+    
+    <table>
+        {% for key, value in citations.items() %}
+           <tr>
+              <th> {{ key }} </th>
+              <td> {{ value }} </td>
+           </tr>
+        {% endfor %}
+     </table>
+
+   </body>
+</html>

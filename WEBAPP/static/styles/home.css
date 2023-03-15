@@ -1,0 +1,65 @@
+body {
+    background: Linen;
+    margin-top: 50px;
+    margin-left: 100px;
+    }
+   
+  h1 {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 2.5em;
+    color: rgb(106, 98, 8);
+    }
+   
+  p {
+    font-family: Georgia, serif;
+    font-size: 1.2em;
+    color: DarkSlateGray;
+    }
+  img {
+    position: fixed;
+    left: 10px; top:10px;
+  }
+
+#top_page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1350px;
+  height:160px;
+  background-color: rgb(242, 179, 108);
+  opacity: 0.9;
+  /*border: 1px outset rgb(197, 235, 189);*/
+  text-align: center;
+  font-size: 130;
+}
+
+#body_page {
+  top: 0px;
+  /* background-color: rgb(229, 77, 77); */
+  text-align: left;
+}
+
+.side_by_side {
+  float:left;
+}
+.stop_side_by_side {
+  clear:both;
+}
+
+.side_bar {
+  position:fixed;
+  
+}
+
+.subtitle {
+  font-weight:bolder;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size:xx-large;
+  color: darkgoldenrod;
+  text-decoration-line: underline;
+}
+
+.quotes {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: italic;
+}
