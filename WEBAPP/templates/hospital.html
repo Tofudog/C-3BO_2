@@ -1,16 +1,74 @@
 <!doctype html>
 <html>
 
+    <!-- <meta charset="UTF-8"> -->
+    <title>Cancer-3 Blood Oncologist</title>
     <link rel= "stylesheet" type= "text/css"
     href= "{{ url_for('static',filename='/styles/home.css') }}">
+    
 
     <body>
-        <div class="top_page">
-            <h1>...</h1>
-        </div>
-        <div>
-            ans is {{}}
-        </div>
+        <div class="centerby">
+            <div class="side_by_side">
+               <img src="/static/images/c3bo_temp_logo.jpg"
+                    alt="C-3BO Logo" width="165" height="135">
+            </div>
+            <div class="stop_side_by_side">
+               <h1>
+                  Virtual Hospital Room b2w7-3Lx8-64fr
+               </h1>
+            </div>
+            <div>
+               <a href="/">Home</a>&nbsp&nbsp&nbsp
+               <a href="/bibliography/">Citations</a>
+            </div>
+         </div>
+         <div class="side_by_side">
+            <!-- 
+                * C-3BO + bubble cartoonish text
+                * R2D2 medical stuff
+                * Results
+             -->
+             <div>
+                <img id="botImg" src="/static/images/c3bo1.jpg"
+                alt="C-3BO Bot" width="180px" height="230px">
+                <br><br><br><br><br>
+                <h2 class="bgText">
+                  <!-- &ensp;&ensp;&ensp;&ensp;&ensp; -->
+                  How may I assist you?
+                </h2>
+             </div>
+
+             <div>
+               <!-- specify action param. later -->
+               <form method="post" class="formX">
+                  <label for="fname">Image Path:</label><br>
+                  <input type="text" name="path" value="..."><br><br>
+                  <input type="submit" value="Submit">
+                </form> 
+             </div>
+
+         </div>
+
+         <div>
+            <!-- each image will be same sized in 'test' folder -->
+            <iframe src={{pbsImg}} style="border:2px solid red;"
+             title="Iframe Example" id="midFrame">
+            </iframe>
+          </div>
+
+         <div class="results">
+            <!-- Diagnostic results section -->
+            <h1>Diagnostics</h1>
+            <ul style="list-style-type:disc;">
+               <li>You have something</li><br>
+               <li>Percentage likelihood</li><br>
+               <li>Treatment options...</li><br>
+             </ul>
+             <!-- interpretive <img> -->
+             
+         </div>
+
     </body>
 
 </html>
