@@ -1,13 +1,18 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
 #inherited imports
-import c3bo
+#import c3bo
 
 #extra imports
 from datetime import datetime
 
 
+#will contain the curr image
+infoDB = {
+   'image': '/static/images/Official/test/4_2.jpg',
+   'result_image': None
+}
 
 
 """ Stuff Left:
@@ -27,9 +32,22 @@ def index():
 
 @app.route('/hospital/')
 def virtual_hospital():
-   model = c3bo.useModel(jpath="C:\\Users\\leode\\isef_2022-23\\model2.json",
-                      jweights="C:\\Users\\leode\\isef_2022-23\\model2.h5")
-   return render_template("hospital.html", model=model)
+   # model = c3bo.useModel(jpath="C:\\Users\\leode\\isef_2022-23\\model2.json",
+   #                    jweights="C:\\Users\\leode\\isef_2022-23\\model2.h5")
+   model = None #{{model.predict(pbsImg)}} #make sure expand_dims!
+   #x_img = "/static/images/Official/test/4_2.jpg"
+   return render_template("hospital.html", model=model, pbsImg=infoDB['image'])
+
+#request when submit button is clicked
+@app.route('/hospital/', methods=["POST", "GET"])
+def uploadImage():
+   if request.method == 'POST':
+      path = request.form['path']
+      #formData['image'] = ...
+      infoDB['image'] = "/static/images/Official/test/" + path
+      #return redirect(url_for('output'))
+      return virtual_hospital()
+   else: pass
 
 
 @app.route('/bibliography/')
