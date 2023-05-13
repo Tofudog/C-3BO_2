@@ -52,7 +52,7 @@
 
          <div>
             <!-- each image will be same sized in 'test' folder -->
-            <iframe src={{pbsImg}} style="border:2px solid red;"
+            <iframe src="/static/images/currD.jpg" style="border:2px solid red;"
              title="Iframe Example" id="midFrame">
             </iframe>
           </div>
@@ -61,12 +61,16 @@
             <!-- Diagnostic results section -->
             <h1>Diagnostics</h1>
             <ul style="list-style-type:disc;">
-               <li>You have something</li><br>
-               <li>Percentage likelihood</li><br>
-               <li>Treatment options...</li><br>
+               <li>You have {{cancer}}</li><br>
+               <li>Percentage likelihood: {{likelihood}}%</li><br>
+               <li>Treatment options: <a src="https://www.cancer.gov/types/leukemia/patient/adult-aml-treatment-pdq">
+                  NCI_Patient_Version
+               </a></li><br>
              </ul>
              <!-- interpretive <img> -->
-             
+             <iframe src="/static/images/currI.jpg" style="border:1px solid rgb(110, 7, 7);"
+             title="interpretive heatmap" width="114px" height="64px">
+            </iframe>
          </div>
 
     </body>
