@@ -77,8 +77,14 @@ def uploadImage():
 ####already globaly defined in the notebook
 @app.route('/bibliography/')
 def bibliography():
-    context = {"Ai for Leukemia": "Jeff Bezos"}
-    return render_template("bibliography.html", citations=context)
+   sources = {}
+   srcFile = open("sources.txt", mode="r")
+   sLines = srcFile.readlines()
+   srcFile.close() #probably best not to mess with, though tested on cmd
+   for L in sLines:
+      author, title = L.split('::')
+      sources[author] = title
+   return render_template("bibliography.html", citations=sources)
 
 
 

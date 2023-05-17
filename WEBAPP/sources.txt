@@ -1,0 +1,12 @@
+Abir, Wahidul Hasan, et al.:: Explainable AI in Diagnosing and Anticipating Leukemia Using Transfer Learning Method
+Aria, Mehrad, et al.:: Acute Lymphoblastic Leukemia (ALL) image dataset
+Bohr, Adam, and Memarzadeh, Kaveh:: The Rise of Artificial Intelligence in Healthcare Applications
+European Union:: Recital 71 of the GDPR
+Hagenbuchner, Markus:: The Black Box Problem of AI in Oncology
+IBM:: What are Neural Networks
+Kapur, Rohan, MBBS:: The Future of Hematology: The Growing Demand for Subspecialists and Ideas to Increase Interest in the Field Among Medical Residents
+Montavon, Grégoire, et al.:: Methods for Interpreting and Understanding Deep Neural Networks
+O'hara, Kieron:: Explainable AI and the Philosophy and Practice of Explanation
+Sullivan, Tom:: Global Edition Connected Health Focus on digital transformation: 3 charts show healthcare's current state
+University of Bonn:: Artificial Intelligence Helps Diagnose Leukemia
+WHO:: Leukemia incidence trends at the global, regional, and national level between 1990 and 2017
