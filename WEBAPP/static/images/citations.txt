@@ -1,0 +1,12 @@
+IMG=leukstat1.jpg
+* by: WHO and International Agency for Research on Cancer
+* description: leukemia incidence worldwide
+* link: https://www.researchgate.net/publication/343016039/figure/fig1/AS:914923538378753@1595146178895/Global-repartition-of-leukemia-incidence-age-standardized-rate-provided-by-the-WHO.png
+
+IMG=leukstat3.jpg
+* by: 
+
+
+IMG=c3bo1.jpg
+* by: 
+* link: 
