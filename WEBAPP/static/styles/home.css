@@ -1,6 +1,6 @@
 body {
     background: Linen;
-    margin-top: 50px;
+    margin-top: 60px;
     margin-left: 100px;
     }
    
@@ -19,13 +19,27 @@ body {
     position: fixed;
     left: 10px; top:10px;
   }
+  a {
+    font-weight: lighter;
+    font-family:'Times New Roman', Times, serif;
+    color: rgb(37, 128, 166);
+    margin-right: 20px;
+  }
+  a:active {
+    font-size: medium;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: brown;
+  }
+  ul {
+    font-size: 1.4em;
+  }
 
 #top_page {
   position: fixed;
   top: 0;
   left: 0;
   width: 1350px;
-  height:160px;
+  height:180px;
   background-color: rgb(242, 179, 108);
   opacity: 0.9;
   /*border: 1px outset rgb(197, 235, 189);*/
@@ -37,6 +51,22 @@ body {
   top: 0px;
   /* background-color: rgb(229, 77, 77); */
   text-align: left;
+}
+
+#cite {
+  font-size: large;
+}
+
+#botImg {
+  margin-top: 290px;   
+  vertical-align: middle;
+}
+
+#midFrame {
+  margin-left: 170px;
+  margin-top: 120px;
+  width: 340px;
+  height: 280px
 }
 
 .side_by_side {
@@ -59,7 +89,31 @@ body {
   text-decoration-line: underline;
 }
 
+.centerby {
+  text-align: center;
+  font-size: 130;
+}
+
 .quotes {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-style: italic;
 }
+
+.bgText {
+  background-color: #9a968f;
+  padding: 5px;
+  margin-left: 40px;
+}
+
+.formX {
+  margin-top: 280px;
+  margin-left: 100px
+}
+
+.results {
+  margin-top: -400px;
+  margin-left: 890px;
+  font-size: smaller;
+  font-weight: lighter;
+}
+
